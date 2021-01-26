@@ -1,21 +1,32 @@
 import logging
 import os
 import telebot
+from telebot import types
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 bot_cur = telebot.TeleBot("1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ")
 
+
 def start(bot, update):
     update.effective_message.reply_text("Hey")
 
+
 def get_id(bot, update):
     update.effective_message.reply_text(update.effective_message.chat_id)
-    bot_cur.send_message(update.effective_message.chat_id, "yohoooo")
+
+
+def getcontact(bot, update):
+    markup = types.ReplyKeyboardMarkup(row_width=1,one_time_keyboard=True)
+    item_request_contact = types.KeyboardButton('Отправить номер телефона',request_contact=True)
+    markup.add(item_request_contact)
+    bot_cur.send_message(update.effective_message.chat_id, "Отправьте номер телефона, или нажмите на кнопку",
+                         reply_markup=markup)
 
 
 def echo(bot, update):
     update.effective_message.reply_text(update.effective_message.text)
+
 
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
