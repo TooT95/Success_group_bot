@@ -1,14 +1,17 @@
 import logging
 import os
+import telebot
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
+bot_cur = telebot.TeleBot("TOKEN", parse_mode=None)
 
 def start(bot, update):
     update.effective_message.reply_text("Hey")
 
 def get_id(bot, update):
     update.effective_message.reply_text(update.effective_message.chat_id)
+    bot_cur.send_message(update.effective_message.chat_id, "yohoooo")
 
 
 def echo(bot, update):
