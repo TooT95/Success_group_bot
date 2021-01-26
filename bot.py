@@ -8,7 +8,7 @@ def start(bot, update):
     update.effective_message.reply_text("Hey")
 
 def get(bot, update):
-    update.effective_message.reply_text("get")
+    update.effective_message.reply_text(bot)
 
 
 def echo(bot, update):
