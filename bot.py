@@ -3,7 +3,7 @@ import os
 import telebot
 from telebot import types
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters,CallbackQueryHandler
 
 bot_cur = telebot.TeleBot("1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ")
 
@@ -14,6 +14,9 @@ def start(bot, update):
 
 def get_id(bot, update):
     update.effective_message.reply_text(update.effective_message.chat_id)
+
+def getcallback(bot, update):
+    update.effective_message.reply_text(update.effective_message.text)
 
 
 def getcontact(bot, update):
@@ -51,6 +54,7 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('getid', get_id))
+    dp.add_handler(CallbackQueryHandler('getcallback', getcallback))
     dp.add_handler(CommandHandler('getcontact', getcontact))
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_error_handler(error)
