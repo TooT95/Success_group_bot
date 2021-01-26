@@ -51,6 +51,7 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('getid', get_id))
+    dp.add_handler(CommandHandler('getcontact', getcontact))
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_error_handler(error)
 
