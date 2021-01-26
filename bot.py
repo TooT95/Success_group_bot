@@ -7,7 +7,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 def start(bot, update):
     update.effective_message.reply_text("Hey")
 
-def get(bot, update):
+def get_id(bot, update):
     update.effective_message.reply_text(update.effective_message.chat_id)
 
 
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     dp = updater.dispatcher
     # Add handlers
     dp.add_handler(CommandHandler('start', start))
-    dp.add_handler(CommandHandler('get', get))
+    dp.add_handler(CommandHandler('getid', get_id))
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_error_handler(error)
 
