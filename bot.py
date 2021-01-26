@@ -18,8 +18,8 @@ def get_id(bot, update):
 def getcallback(bot, update):
 #     update.effective_message.reply_text(str(update['message']['contact']['phone_number']))
 #      update.effective_message.reply_text("https://t.me/Success_group_bot")
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    bot_cur.send_message(update.effective_message.chat_id, "https://t.me/Success_group_bot",reply_markup=None)
+    markup = types.ReplyKeyboardRemove()
+    bot_cur.send_message(update.effective_message.chat_id, "https://t.me/Success_group_bot",reply_markup=markup)
     
 
 
