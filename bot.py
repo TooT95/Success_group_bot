@@ -16,7 +16,7 @@ def get_id(bot, update):
     update.effective_message.reply_text(update.effective_message.chat_id)
 
 def getcallback(bot, update):
-    update.effective_message.reply_text(update.effective_message.callback_query)
+    update.effective_message.reply_text(update.args)
 
 
 def getcontact(bot, update):
