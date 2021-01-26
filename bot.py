@@ -1,63 +1,44 @@
 import logging
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
-PORT = int(os.environ.get('PORT', 5000))
 
-# Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-logger = logging.getLogger(__name__)
-TOKEN = '1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ'
 
-# Define a few command handlers. These usually take the two arguments update and
-# context. Error handlers also receive the raised TelegramError object in error.
-def start(update, context):
-    """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+def start(bot, update):
+    update.effective_message.reply_text("Hi!")
 
-def help(update, context):
-    """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
 
-def echo(update, context):
-    """Echo the user message."""
-    update.message.reply_text(update.message.text)
+def echo(bot, update):
+    update.effective_message.reply_text(update.effective_message.text)
 
-def error(update, context):
-    """Log Errors caused by Updates."""
-    logger.warning('Update "%s" caused error "%s"', update, context.error)
+def error(bot, update, error):
+    logger.warning('Update "%s" caused error "%s"', update, error)
 
-def main():
-    """Start the bot."""
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    # Post version 12 this will no longer be necessary
-    updater = Updater(TOKEN, use_context=True)
 
-    # Get the dispatcher to register handlers
+if __name__ == "__main__":
+    # Set these variable to the appropriate values
+    TOKEN = "1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ"
+    NAME = "successgroupbot"
+
+    # Port is given by Heroku
+    PORT = os.environ.get('PORT')
+
+    # Enable logging
+    logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                        level=logging.INFO)
+    logger = logging.getLogger(__name__)
+
+    # Set up the Updater
+    updater = Updater(TOKEN)
     dp = updater.dispatcher
-
-    # on different commands - answer in Telegram
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
-
-    # on noncommand i.e message - echo the message on Telegram
+    # Add handlers
+    dp.add_handler(CommandHandler('start', start))
     dp.add_handler(MessageHandler(Filters.text, echo))
-
-    # log all errors
     dp.add_error_handler(error)
 
-    # Start the Bot
+    # Start the webhook
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN)
-    updater.bot.setWebhook('https://successgroupbot.herokuapp.com/' + TOKEN)
-
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
-    # start_polling() is non-blocking and will stop the bot gracefully.
+    updater.bot.setWebhook("https://{}.herokuapp.com/{}".format(NAME, TOKEN))
     updater.idle()
-
-if __name__ == '__main__':
-    main()
