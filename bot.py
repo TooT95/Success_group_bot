@@ -24,6 +24,11 @@ def echo(bot, update):
 def error(bot, update, error):
     logger.warning('Update "%s" caused error "%s"', update, error)
 
+def getcallback(bot, update):
+#     update.effective_message.reply_text(str(update['message']['contact']['phone_number']))
+#      update.effective_message.reply_text("https://t.me/Success_group_bot")
+    markup = types.ReplyKeyboardRemove()
+    bot_cur.send_message(update.effective_message.chat_id, "https://t.me/Success_group_bot",reply_markup=markup)
 
 if __name__ == "__main__":
     # Set these variable to the appropriate values
@@ -44,7 +49,6 @@ if __name__ == "__main__":
     # Add handlers
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('getid', get_id))
-    dp.add_handler(CommandHandler('getcontact', getcontact))
     dp.add_handler(MessageHandler(Filters.text, echo))
     dp.add_handler(MessageHandler(Filters.contact, getcallback))
     dp.add_error_handler(error)
