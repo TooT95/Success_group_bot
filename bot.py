@@ -17,11 +17,14 @@ def get_id(bot, update):
 
 def getcallback(bot, update):
 #     update.effective_message.reply_text(str(update['message']['contact']['phone_number']))
-    update.effective_message.reply_text("https://t.me/Success_group_bot")
+#      update.effective_message.reply_text("https://t.me/Success_group_bot")
+    markup = types.ReplyKeyboardMarkup()
+    bot_cur.send_message(update.effective_message.chat_id, "https://t.me/Success_group_bot",reply_markup=markup)
+    
 
 
 def getcontact(bot, update):
-    markup = types.ReplyKeyboardMarkup(row_width=1)
+    markup = types.ReplyKeyboardMarkup()
     item_request_contact = types.KeyboardButton('Отправить номер телефона',request_contact=True)
     markup.add(item_request_contact)
     bot_cur.send_message(update.effective_message.chat_id, "Отправьте номер телефона, или нажмите на кнопку",
