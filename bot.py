@@ -13,7 +13,7 @@ PREV_YEAR_KEY = "prev_year"
 COR_DATA_NAME = 'Корешок'
 BACK_TO_LIST_KEY = 'back_to_list'
 URL = "http://94.158.52.112:8080/UDN/hs/telegram/"
-TOKEN = '971974636:AAF8VMmiIiJNGje_w61IU-ebyynuk9gBtTY'
+TOKEN = '1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ'
 
 app = Flask(__name__)
 bot = telebot.TeleBot(TOKEN)
