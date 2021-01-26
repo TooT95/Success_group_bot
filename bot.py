@@ -24,7 +24,7 @@ def getcallback(bot, update):
 
 
 def getcontact(bot, update):
-    markup = types.ReplyKeyboardMarkup()
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item_request_contact = types.KeyboardButton('Отправить номер телефона',request_contact=True)
     markup.add(item_request_contact)
     bot_cur.send_message(update.effective_message.chat_id, "Отправьте номер телефона, или нажмите на кнопку",
