@@ -8,7 +8,7 @@ def start(bot, update):
     update.effective_message.reply_text("Hey")
 
 def get(bot, update):
-    update.effective_message.reply_text(bot['chat']['id'])
+    update.effective_message.reply_text(update['chat']['id'])
 
 
 def echo(bot, update):
