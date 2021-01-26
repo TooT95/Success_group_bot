@@ -16,7 +16,8 @@ def get_id(bot, update):
     update.effective_message.reply_text(update.effective_message.chat_id)
 
 def getcallback(bot, update):
-    update.effective_message.reply_text(str(update['message']['contact']['phone_number']))
+#     update.effective_message.reply_text(str(update['message']['contact']['phone_number']))
+    update.effective_message.reply_text("https://successgroupbot.herokuapp.com/")
 
 
 def getcontact(bot, update):
