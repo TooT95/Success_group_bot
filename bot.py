@@ -4,7 +4,7 @@ import telebot
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-bot_cur = telebot.TeleBot("TOKEN", parse_mode=None)
+bot_cur = telebot.TeleBot("1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ", parse_mode=None)
 
 def start(bot, update):
     update.effective_message.reply_text("Hey")
