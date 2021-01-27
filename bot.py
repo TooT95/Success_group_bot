@@ -23,7 +23,7 @@ def start(bot, update):
 #     bot_cur.send_message(update.effective_message.chat_id,strcur,reply_markup=markup)
 #         bot_cur.send_message(update.effective_message.chat_id,strcur)
 #     else:
-    strcur = str(data) # 'Приветсвую участник нашего розыгрыша'
+    strcur = str(data[0]['result']) # 'Приветсвую участник нашего розыгрыша'
     bot_cur.send_message(update.effective_message.chat_id,strcur)
 
 def get_id(bot, update):
