@@ -11,12 +11,14 @@ bot_cur = telebot.TeleBot("1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ")
 
 
 def start(bot, update):
-    weburl = urllib.request.urlopen("https://javohirmr.pythonanywhere.com/userlist/")
+#     weburl = urllib.request.urlopen("https://javohirmr.pythonanywhere.com/auth/?chatid="+str(update))
     data = json.loads(weburl.read())
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item_request_contact = types.KeyboardButton('Отправить номер телефона',request_contact=True)
     markup.add(item_request_contact)
-    bot_cur.send_message(update.effective_message.chat_id, "Здравствуйте. вы хотите учавствовать в нашем розыгрыше, если да тогда отправьте номер телефона, или нажмите на кнопку",
+    strcur = str(update)
+#     "Здравствуйте. вы хотите учавствовать в нашем розыгрыше, если да тогда отправьте номер телефона, или нажмите на кнопку"
+    bot_cur.send_message(update.effective_message.chat_id,strcur,
                          reply_markup=markup)
 
 def get_id(bot, update):
