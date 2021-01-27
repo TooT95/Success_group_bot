@@ -37,7 +37,7 @@ def getcallback(bot, update):
 #     update.effective_message.reply_text(str(update['message']['contact']['phone_number']))
 #      update.effective_message.reply_text("https://t.me/Success_group_bot")
     phone_number = str(update['message']['contact']['phone_number'])
-    chat_id = update.effective_message.chat_id
+    chat_id = str(update.effective_message.chat_id)
     markup = types.ReplyKeyboardRemove()
     weburl = urllib.request.urlopen('https://javohirmr.pythonanywhere.com/registerbot?chatid='+chat_id+'&phonenumber='+phone_number)
     data = json.loads(weburl.read())
