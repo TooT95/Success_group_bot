@@ -36,8 +36,16 @@ def error(bot, update, error):
 def getcallback(bot, update):
 #     update.effective_message.reply_text(str(update['message']['contact']['phone_number']))
 #      update.effective_message.reply_text("https://t.me/Success_group_bot")
+    phone_number = str(update['message']['contact']['phone_number'])
+    chat_id = update.effective_message.chat_id
     markup = types.ReplyKeyboardRemove()
-    bot_cur.send_message(update.effective_message.chat_id, "https://t.me/Success_group_bot",reply_markup=markup)
+    weburl = urllib.request.urlopen('https://javohirmr.pythonanywhere.com/registerbot?chatid='+chat_id+'&phonenumber='+phone_number)
+    data = json.loads(weburl.read())
+    result = data[0]['result']
+    if(result=='ok'):
+        bot_cur.send_message(update.effective_message.chat_id, "Ссылка на доступ",reply_markup=markup)
+    else:
+        bot_cur.send_message(update.effective_message.chat_id, "При регистрации произошла ошибка, обратитесь к администратору",reply_markup=markup)
 
 if __name__ == "__main__":
     # Set these variable to the appropriate values
