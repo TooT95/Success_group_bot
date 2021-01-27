@@ -4,3 +4,4 @@ Werkzeug==0.14.1
 pyTelegramBotAPI==3.6.6
 requests==2.17.1
 python-telegram-bot==12.7
+urllib
