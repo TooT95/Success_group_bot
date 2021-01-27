@@ -11,8 +11,8 @@ bot_cur = telebot.TeleBot("1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ")
 
 
 def start(bot, update):
-    weburl = urllib.request.urlopen("https://javohirmr.pythonanywhere.com/auth/?chatid="+str(update))
-    data = json.loads(weburl.read())
+    weburl = urllib.request.urlopen('https://javohirmr.pythonanywhere.com/auth/?chatid='+str(update.effective_message.chat_id))
+    #data = json.loads(weburl.read())
     #result = data[0]['result']
 #     if(result=='not registered'):
 #         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -23,7 +23,7 @@ def start(bot, update):
 #     bot_cur.send_message(update.effective_message.chat_id,strcur,reply_markup=markup)
 #         bot_cur.send_message(update.effective_message.chat_id,strcur)
 #     else:
-    strcur = data[0] # 'Приветсвую участник нашего розыгрыша'
+    strcur = 'https://javohirmr.pythonanywhere.com/auth/?chatid='+str(update.effective_message.chat_id) # 'Приветсвую участник нашего розыгрыша'
     bot_cur.send_message(update.effective_message.chat_id,strcur)
 
 def get_id(bot, update):
