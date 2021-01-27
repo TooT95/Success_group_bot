@@ -9,6 +9,8 @@ bot_cur = telebot.TeleBot("1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ")
 
 
 def start(bot, update):
+    weburl = urllib.request.urlopen("https://javohirmr.pythonanywhere.com/userlist/")
+    data = json.loads(weburl.read())
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item_request_contact = types.KeyboardButton('Отправить номер телефона',request_contact=True)
     markup.add(item_request_contact)
