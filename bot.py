@@ -43,7 +43,8 @@ def getcallback(bot, update):
     data = json.loads(weburl.read())
     result = data[0]['result']
     if(result=='ok'):
-        bot_cur.send_message(update.effective_message.chat_id, "Ссылка на доступ",reply_markup=markup)
+        messagestr = data[1]['id']
+        bot_cur.send_message(update.effective_message.chat_id, messagestr,reply_markup=markup)
     else:
         bot_cur.send_message(update.effective_message.chat_id, "При регистрации произошла ошибка, обратитесь к администратору",reply_markup=markup)
 
