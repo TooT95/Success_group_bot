@@ -13,18 +13,18 @@ bot_cur = telebot.TeleBot("1643817918:AAHUPAqxhS6sMQY5MjpuEdY_4p-sqj5TMkQ")
 def start(bot, update):
     weburl = urllib.request.urlopen("https://javohirmr.pythonanywhere.com/auth/?chatid="+str(update))
     data = json.loads(weburl.read())
-    result = data[0]['result']
-    if(result=='not registered'):
-        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        item_request_contact = types.KeyboardButton('Отправить номер телефона',request_contact=True)
-        markup.add(item_request_contact)
-        strcur = str(update)
-#     "Здравствуйте. вы хотите учавствовать в нашем розыгрыше, если да тогда отправьте номер телефона, или нажмите на кнопку"
+    #result = data[0]['result']
+#     if(result=='not registered'):
+#         markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+#         item_request_contact = types.KeyboardButton('Отправить номер телефона',request_contact=True)
+#         markup.add(item_request_contact)
+#         strcur = str(update)
+# #     "Здравствуйте. вы хотите учавствовать в нашем розыгрыше, если да тогда отправьте номер телефона, или нажмите на кнопку"
 #     bot_cur.send_message(update.effective_message.chat_id,strcur,reply_markup=markup)
-        bot_cur.send_message(update.effective_message.chat_id,strcur)
-    else:
-        strcur = 'Приветсвую участник нашего розыгрыша'
-        bot_cur.send_message(update.effective_message.chat_id,strcur)
+#         bot_cur.send_message(update.effective_message.chat_id,strcur)
+#     else:
+    strcur = data[0] # 'Приветсвую участник нашего розыгрыша'
+    bot_cur.send_message(update.effective_message.chat_id,strcur)
 
 def get_id(bot, update):
     update.effective_message.reply_text(update.effective_message.chat_id)
